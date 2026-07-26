@@ -1,0 +1,75 @@
+#####################################################################
+#  INDUSTRY 5.0 SMART COLLABORATIVE WORKSTATION CONTROLLER (SCWC)   #
+#  Embedded C Simulation & Performance Evaluation                   #
+#####################################################################
+
+=====================================================================
+ PHASE 1: DETERMINISTIC TEST-CASE VALIDATION (10 test vectors)
+=====================================================================
+ID   Description                            Expected     Actual       Result
+---------------------------------------------------------------------
+TC0  TC0: Nominal operation                 NORMAL       NORMAL       PASS  
+TC1  TC1: Temperature warning boundary      WARNING      WARNING      PASS  
+TC2  TC2: Temperature critical              CRITICAL     CRITICAL     PASS  
+TC3  TC3: Vibration warning boundary        WARNING      WARNING      PASS  
+TC4  TC4: Vibration critical (bearing wear) CRITICAL     CRITICAL     PASS  
+TC5  TC5: Human proximity warning zone      WARNING      WARNING      PASS  
+TC6  TC6: Human proximity DANGER (E-stop)   SAFETY_STOP  SAFETY_STOP  PASS  
+TC7  TC7: Multi-fault + safety priority     SAFETY_STOP  SAFETY_STOP  PASS  
+TC8  TC8: Idle -> low power / sustainability LOW_POWER    LOW_POWER    PASS  
+TC9  TC9: Exact-threshold edge case         WARNING      WARNING      PASS  
+---------------------------------------------------------------------
+Result: 10 / 10 test cases PASSED (100.0% pass rate)
+=====================================================================
+
+=====================================================================
+ PHASE 2: CONTINUOUS SHIFT SIMULATION (200 control-loop cycles)
+=====================================================================
+[   0] T= 38.11C  Vib= 1.16mm/s  Prox= 203.4cm  P= 294.2W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   1] T= 38.68C  Vib= 1.10mm/s  Prox= 201.1cm  P= 296.5W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   2] T= 39.41C  Vib= 0.89mm/s  Prox= 192.7cm  P= 302.4W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   3] T= 38.56C  Vib= 0.84mm/s  Prox= 192.4cm  P= 298.9W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   4] T= 39.34C  Vib= 0.79mm/s  Prox= 181.3cm  P= 303.9W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   5] T= 38.64C  Vib= 0.59mm/s  Prox= 192.6cm  P= 302.7W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   6] T= 38.45C  Vib= 0.45mm/s  Prox= 192.5cm  P= 307.2W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   7] T= 37.75C  Vib= 0.38mm/s  Prox= 202.1cm  P= 309.2W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   8] T= 37.23C  Vib= 0.40mm/s  Prox= 206.5cm  P= 303.6W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[   9] T= 37.97C  Vib= 0.22mm/s  Prox= 211.9cm  P= 307.4W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  10] T= 37.25C  Vib= 0.38mm/s  Prox= 219.1cm  P= 303.0W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  11] T= 36.80C  Vib= 0.29mm/s  Prox= 215.3cm  P= 299.1W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  12] T= 37.15C  Vib= 0.24mm/s  Prox= 205.6cm  P= 302.8W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  13] T= 36.99C  Vib= 0.10mm/s  Prox= 198.6cm  P= 306.5W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  14] T= 36.54C  Vib= 0.19mm/s  Prox= 203.1cm  P= 304.8W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  20] T= 37.54C  Vib= 0.10mm/s  Prox= 178.0cm  P= 294.4W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  40] T= 43.23C  Vib= 0.63mm/s  Prox=  24.0cm  P= 321.2W | STATE=SAFETY_STOP Speed=  0% Alert=RED    EStop=1 MScore=  0.0
+[  60] T= 40.42C  Vib= 1.68mm/s  Prox=  92.8cm  P= 326.7W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[  80] T= 43.06C  Vib= 1.25mm/s  Prox=  29.0cm  P= 318.4W | STATE=SAFETY_STOP Speed=  0% Alert=RED    EStop=1 MScore=  0.0
+[ 100] T= 41.96C  Vib= 0.81mm/s  Prox=  80.6cm  P= 322.0W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[ 120] T= 39.93C  Vib= 0.62mm/s  Prox= 301.0cm  P=   5.0W | STATE=LOW_POWER   Speed=  0% Alert=GREEN  EStop=0 MScore=  0.0
+[ 140] T= 42.79C  Vib= 0.70mm/s  Prox= 291.7cm  P=   5.7W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+[ 160] T= 40.75C  Vib= 1.47mm/s  Prox=  29.0cm  P=  18.7W | STATE=SAFETY_STOP Speed=  0% Alert=RED    EStop=1 MScore=  0.0
+[ 180] T= 38.09C  Vib= 1.52mm/s  Prox=  81.1cm  P=  24.6W | STATE=NORMAL      Speed=100% Alert=GREEN  EStop=0 MScore=  0.0
+...(full per-cycle detail written to simulation_log.csv)...
+=====================================================================
+
+================= PERFORMANCE EVALUATION SUMMARY =================
+Total control-loop iterations      : 200
+Simulated shift duration            : 400.0 s (6.67 min)
+Average loop execution time         : 0.00144 ms
+Best-case loop execution time       : 0.00100 ms
+Worst-case loop execution time (WCET): 0.01200 ms
+Controller throughput                : 694444.4 iterations/sec
+--------------------------------------------------------------------
+State distribution:
+   NORMAL       :    176 ( 88.0%)
+   LOW_POWER    :     21 ( 10.5%)
+   WARNING      :      0 (  0.0%)
+   CRITICAL     :      0 (  0.0%)
+   SAFETY_STOP  :      3 (  1.5%)
+--------------------------------------------------------------------
+Safety-stop events triggered        : 3
+Worst-case safety response latency  : 0.01200 ms
+Estimated energy saved (low-power)  : 10.5% of idle windows offloaded
+======================================================================
+
+Simulation complete. See simulation_log.csv for the full data trace.
